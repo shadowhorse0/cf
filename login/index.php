@@ -13,11 +13,11 @@
 </head>
 
 <body>
-    <h1 class="text-center">Login!</h1>
+    <h1 class="text-center my-4">Login!</h1>
 
     <div class="container">
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <label for="exampleFormControlInput1" class="form-label">Username</label>
             <input type="text" class="form-control" id="username">
         </div>
         <div class="mb-3">
@@ -25,7 +25,14 @@
             <input type="password" class="form-control" id="password">
         </div>
         <div class="text-center">
-            <button type="button" class="btn btn-primary" id="login">Login</button>
+            <div class="alert bg-danger text-white my-2 d-none" id="alert" role="alert">
+                This is a warning alert—check it out!
+            </div>
+            <div class="spinner-border my-2 d-none" id="spinner" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary my-1   " id="login">Login</button>
         </div>
 
     </div>
@@ -37,7 +44,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    -->
 </body>
 
 </html>

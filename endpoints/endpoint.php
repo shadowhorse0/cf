@@ -1,39 +1,38 @@
 <?php
-//Code to solve CORS policy error
-if (isset($_SERVER['HTTP_ORIGIN'])) {
-    header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-    header('Access-Control-Allow-Credentials: true');
-    header('Access-Control-Max-Age: 86400');    // cache for 1 day
-}
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-        // may also be using PUT, PATCH, HEAD etc
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-        header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-
-    exit(0);
-}
+header("Access-Control-Allow-Origin: *");
 include $_SERVER['DOCUMENT_ROOT'] . '/partials/db/db.php';
 $response = null;
+
 try {
-
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-    } else {
-        throw new Exception("Username or Passoword is missing!");
+    if (isset($_POST['request_type'])) {
+        $request_type = $_POST['request_type'];
     }
 
-    $sql = "SELECT * FROM `cf`.`users` WHERE `username`='$username' AND `password`='$password'";
-    $result = $conn->query($sql);
-    if (!$result->num_rows > 0) {
-        throw new Exception("Invali credentials!");
-    }
+    switch ($request_type) {
 
-    $response['msg'] = "Login successfull!";
-    $response['result'] = true;
+        case "login":
+            if (isset($_POST['data'])) {
+                $data = $_POST['data'];
+            }
+            $data = json_decode($data, true);
+
+            $username = $data['username'];
+            $password = $data['password'];
+
+            $sql = "SELECT * FROM `cf`.`users` WHERE `username`='$username' AND `password`='$password'";
+            $result = $conn->query($sql);
+
+            if (!$result->num_rows > 0) {
+                throw new Exception("Invali credentials!");
+            }
+
+            // starting user session
+            session_start();
+
+            $response['msg'] = "Login successfull!";
+            $response['status'] = true;
+            break;
+    }
 } catch (Exception $e) {
     $response['status'] = false;
     $response['msg'] = $e->getMessage();
