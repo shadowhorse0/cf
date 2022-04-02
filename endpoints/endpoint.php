@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 include $_SERVER['DOCUMENT_ROOT'] . '/partials/db/db.php';
 $response = null;
 try {
