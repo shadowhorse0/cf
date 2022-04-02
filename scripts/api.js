@@ -2,7 +2,6 @@ async function endpoint(data, request_type) {
     var result;
     data = JSON.stringify(data);
     // encrypting request type
-    request_type = btoa(btoa(btoa(request_type)));
 
     var settings = {
         "url": "http://128.199.25.59/endpoints/endpoint.php",
@@ -12,6 +11,7 @@ async function endpoint(data, request_type) {
         "timeout": 0,
         "data": {
             "data": data,
+            "request_type": request_type
         },
         success: function (response, textStatus, xhr) {
             if (xhr.status == 200) {
