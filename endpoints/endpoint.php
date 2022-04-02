@@ -28,6 +28,7 @@ try {
 
             // starting user session
             session_start();
+            $_SESSION['username'] = $username;
 
             $response['msg'] = "Login successfull!";
             $response['status'] = true;
