@@ -20,7 +20,10 @@ switch ($request_type) {
             $data = json_decode($data, true);
 
             $username = $data['username'];
+            $username = preg_replace("/\s+/", "", $username);
+
             $password = $data['password'];
+            $password = preg_replace("/\s+/", "", $password);
 
             $sql = "SELECT * FROM `cf`.`users` WHERE `username`='$username' AND `password`='$password'";
             $result = $conn->query($sql);

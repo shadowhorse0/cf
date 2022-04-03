@@ -18,8 +18,10 @@ if (isset($_GET['id'])) {
 <?php
 if (isset($_GET['username'])) {
     $username = $_GET['username'];
+    $username = preg_replace("/\s+/", "", $username);
     $candidate_name = $_GET['candidate_name'];
     $password = $_GET['password'];
+    $password = preg_replace("/\s+/", "", $password);
 
     $sql = "INSERT INTO `cf`.`users`(`username`, `candidate_name`, `password`, `score`, `time_left`,`status`) VALUES ('$username','$candidate_name','$password','0','600','not_attempted')";
     $conn->query($sql);

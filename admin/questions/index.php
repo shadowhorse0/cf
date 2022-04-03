@@ -18,6 +18,8 @@ if (isset($_GET['id'])) {
 if (isset($_GET['question'])) {
     $question = $_GET['question'];
     $answer = $_GET['answer'];
+    $answer = preg_replace("/\s+/", "", $answer);
+
 
     $sql = "INSERT INTO `cf`.`questions`(`question`, `answer`) VALUES ('$question','$answer')";
     $conn->query($sql);
