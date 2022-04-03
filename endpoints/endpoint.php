@@ -132,8 +132,13 @@ switch ($request_type) {
                 $flag = true;
             }
 
+            $flag_up = 0;
+            if ($flag) {
+                $flag_up = 1;
+            }
+
             // updating attempted table
-            $sql = "UPDATE `cf`.`attempted` SET `answer`='$answer', `flag`='$flag' WHERE `username`='$username' AND `question_id`='$qns_id'";
+            $sql = "UPDATE `cf`.`attempted` SET `answer`='$answer', `flag`='$flag_up' WHERE `username`='$username' AND `question_id`='$qns_id'";
             $conn->query($sql);
 
             // check user current score
@@ -145,10 +150,7 @@ switch ($request_type) {
             }
 
             // updating user score in user table
-            $flat_up = 0;
-            if ($flag) {
-                $flat_up = 1;
-            }
+
             $sql = "UPDATE `cf`.`users` SET `score`='$crnt_score' WHERE `username`='$username'";
             $conn->query($sql);
 
