@@ -165,7 +165,7 @@ $("#submit").click(() => {
 // user logout
 $("#logout").click(() => {
     Swal.fire({
-        icon: 'success',
+        icon: 'warning',
         title: 'Do you really want to logout?!',
         showConfirmButton: true,
         showCancelButton: true,
