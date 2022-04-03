@@ -104,8 +104,14 @@ $("#submit").click(() => {
 
 // user logout
 $("#logout").click(() => {
-    var result = confirm("Do you want to submit test?");
-    if (result) {
-        console.log(result);
-    }
+    Swal.fire({
+        icon: 'success',
+        title: 'Do you really, want to submit test?!',
+        showConfirmButton: true,
+        showCancelButton: true,
+    }).then((result) => {
+        if (result['isConfirmed']) {
+            window.location.href = "/logout/";
+        }
+    })
 })

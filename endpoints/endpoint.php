@@ -27,17 +27,20 @@ switch ($request_type) {
                 throw new Exception("Invalid credentials!");
             }
 
-            // checking user has already given test
-            $sql = "SELECT `time_left` FROM `cf`.`users` WHERE `username`='$username'";
-            $time_left = $conn->query($sql)->fetch_assoc()['time_left'];
-            if ($time_left == 0) {
-                throw new Exception("Test already submitted!");
+            if ($username != "admin") {
+
+                // checking user has already given test
+                $sql = "SELECT `time_left` FROM `cf`.`users` WHERE `username`='$username'";
+                $time_left = $conn->query($sql)->fetch_assoc()['time_left'];
+                if ($time_left == 0) {
+                    throw new Exception("Test already submitted!");
+                }
             }
 
             // starting user session
             session_start();
             $_SESSION['username'] = $username;
-
+            $response['username'] = $username;
             $response['msg'] = "Login successfull!";
             $response['status'] = true;
         } catch (Exception $e) {

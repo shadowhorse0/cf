@@ -46,9 +46,7 @@ if (isset($_SESSION['username'])) {
     <nav class="navbar navbar-light bg-light justify-content-between">
         <a class="navbar-brand">Codefiesta</a>
         <a> Name: <?php echo $candidate_name  ?></a>
-        <form class="form-inline">
-            <button id="logout" class="btn btn-outline-danger my-2 my-sm-0">Log out</button>
-        </form>
+        <button id="logout" class="btn btn-outline-danger my-2 my-sm-0">Log out</button>
     </nav>
 
     <br>

@@ -19,7 +19,11 @@ $("#login").click(function (e) {
             $('#alert').addClass('bg-success');
 
             //redirecting user 
-            window.location.href = "/dashboard/";
+            if (response['username'] != "admin") {
+                window.location.href = "/dashboard/";
+            } else {
+                window.location.href = "/admin/";
+            }
 
         } else {
             $('#login').text('Login');
