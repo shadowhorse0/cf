@@ -85,7 +85,7 @@ if (isset($_SESSION['username'])) {
         <br>
         <br>
         <div class="container text-center">
-            <div class="alert bg-danger text-white d-non my-2" role="alert" id="ans_alert">
+            <div class="alert bg-danger text-white d-none my-2" role="alert" id="ans_alert">
                 A simple danger alert—check it out!
             </div>
             <div class="spinner-border my-2 d-none my-2" id="ans_spinner" role="status">
