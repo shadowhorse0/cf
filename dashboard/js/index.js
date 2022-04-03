@@ -106,7 +106,7 @@ function get_question() {
         console.log(response);
         if (response['status']) {
             var question = response['question'];
-            $("#qns").text(question['question']);
+            $("#qns").html(question['question']);
             $("#question").removeClass("d-none");
             qns_id = question['id'];
 

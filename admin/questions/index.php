@@ -56,9 +56,9 @@ if (isset($_GET['question'])) {
     <br><br>
     <div class="container">
         <h1 class="text-center">Add Question</h1>
-        <div class="mb-3">
-            <label for="question" class="form-label">Question</label>
-            <input type="text" class="form-control" id="question">
+        <div class="form-group">
+            <label for="question">Question</label>
+            <textarea class="form-control" id="question" rows="3"></textarea>
         </div>
         <div class="mb-3">
             <label for="answer" class="form-label">Answer</label>
