@@ -6,10 +6,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/partials/db/db.php';
 <?php
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    if ($id != 1) {
-        $sql = "DELETE FROM `cf`.`questions` WHERE `id`=$id";
-        $conn->query($sql);
-    }
+    $sql = "DELETE FROM `cf`.`questions` WHERE `id`=$id";
+    $conn->query($sql);
 }
 ?>
 
