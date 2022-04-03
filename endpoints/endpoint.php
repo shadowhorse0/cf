@@ -140,13 +140,17 @@ switch ($request_type) {
             $sql = "SELECT COUNT(*) AS `score` FROM `cf`.`attempted` WHERE `username`='$username' AND `flag`='1'";
             $crnt_score = $conn->query($sql)->fetch_assoc()['score'];
 
-            // updating user score in user table
-            $sql = "UPDATE `cf`.`users` SET `score`='$crnt_score' WHERE `username`='$username'";
-            $conn->query($sql);
-
             if (!$flag) {
                 throw new Exception("Wrong answer!");
             }
+
+            // updating user score in user table
+            $flat_up = 0;
+            if ($flag) {
+                $flat_up = 1;
+            }
+            $sql = "UPDATE `cf`.`users` SET `score`='$crnt_score' WHERE `username`='$username'";
+            $conn->query($sql);
 
             $response['msg'] = "Correct answer!";
             $response['crnt_score'] = $crnt_score;
