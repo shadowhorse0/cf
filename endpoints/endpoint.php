@@ -2,6 +2,8 @@
 header("Access-Control-Allow-Origin: *");
 include $_SERVER['DOCUMENT_ROOT'] . '/partials/db/db.php';
 $response = null;
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 if (isset($_POST['request_type'])) {
     $request_type = $_POST['request_type'];
