@@ -32,11 +32,6 @@ if (isset($_SESSION['username'])) {
         user-select: none;
     }
 
-    .qna {
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-
     .spacer {
         float: right;
     }
@@ -44,19 +39,24 @@ if (isset($_SESSION['username'])) {
 
 <body>
     <nav class="navbar navbar-light bg-light justify-content-between">
-        <a class="navbar-brand">Codefiesta</a>
-        <a> Name: <?php echo $candidate_name  ?></a>
-        <button id="logout" class="btn btn-outline-danger my-2 my-sm-0">Log out</button>
+        <a class="navbar-brand" style="margin-left: 1%;">Codefiesta</a>
+        <button id="logout" class="btn btn-outline-danger my-2 my-sm-0" style="margin-right: 1%;">Log out</button>
     </nav>
 
     <br>
     <div>
-        <a style="margin: 1%;">Score: <span id="score"><?php echo $score; ?></span> </a>
-        <l class="spacer" style="margin-right: 1%;"> Time Left: <span id="mins"> </span> <span id="secs"></span> &nbsp; &nbsp; &nbsp;</l>
+        <h4><a style="margin: 1%;">Score: <span id="score"><?php echo $score; ?></span> </a>
+            <span class="spacer" style="margin-right: 1%;"> Time Left: <span id="mins"> </span> <span id="secs"></span></span>
+        </h4>
+        <br>
+        <div class="text-center my-4">
+            <h4><a> Name: <?php echo $candidate_name  ?></a></h4>
+        </div>
+
     </div>
     <br>
-    <div id="question" class="d-none">
-        <div class="qna">
+    <div id="question" class="d-none container">
+        <div>
 
             <div class="card unselectable">
                 <h3 class="text-center"> Question: <span id="qns_id_incr"></span></h3>
@@ -85,7 +85,7 @@ if (isset($_SESSION['username'])) {
         <br>
         <br>
         <div class="container text-center">
-            <div class="alert bg-danger text-white d-none my-2" role="alert" id="ans_alert">
+            <div class="alert bg-danger text-white d-non my-2" role="alert" id="ans_alert">
                 A simple danger alert—check it out!
             </div>
             <div class="spinner-border my-2 d-none my-2" id="ans_spinner" role="status">

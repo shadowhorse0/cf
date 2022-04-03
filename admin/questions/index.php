@@ -38,6 +38,14 @@ if (isset($_GET['question'])) {
 </head>
 
 <body>
+    <h1 class="text-center">Admin</h1>
+    <div class="text-center my-4">
+        <a href="/admin/users/" type="button" class="btn btn-primary">Users</a>
+        <a href="/admin/questions/" type="button" class="btn btn-primary">Questions</a>
+        <a href="/logout/" type="button" class="btn btn-primary">Logout</a>
+    </div>
+    <hr>
+    <br><br>
     <div class="container">
         <h1 class="text-center">Add Question</h1>
         <div class="mb-3">
