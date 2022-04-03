@@ -185,6 +185,28 @@ switch ($request_type) {
             $response['msg'] = $e->getMessage();
         }
         break;
+
+    case "add_question":
+        try {
+            if (isset($_POST['data'])) {
+                $data = $_POST['data'];
+            }
+            $data = json_decode($data, true);
+
+            $question = $data['question'];
+            $answer = $data['answer'];
+            $answer = preg_replace("/\s+/", "", $answer);
+
+            $sql = "INSERT INTO `cf`.`questions`(`question`, `answer`) VALUES ('$question','$answer')";
+            $conn->query($sql);
+
+            $response['status'] = true;
+            $response['msg'] = "question added successfully!";
+        } catch (Exception $e) {
+            $response['status'] = false;
+            $response['msg'] = $e->getMessage();
+        }
+        break;
 }
 
 $response = json_encode($response);

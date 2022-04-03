@@ -176,3 +176,11 @@ $("#logout").click(() => {
     })
 })
 
+$('#qns').bind('copy paste cut', function (e) {
+    e.preventDefault();
+    Swal.fire({
+        icon: 'warning',
+        title: 'cut,copy & paste options are disabled !!',
+        showConfirmButton: true,
+    })
+});

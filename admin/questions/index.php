@@ -11,18 +11,6 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<!-- accepting get request for adding user -->
-<?php
-if (isset($_GET['question'])) {
-    $question = $_GET['question'];
-    $answer = $_GET['answer'];
-    $answer = preg_replace("/\s+/", "", $answer);
-
-
-    $sql = "INSERT INTO `cf`.`questions`(`question`, `answer`) VALUES ('$question','$answer')";
-    $conn->query($sql);
-}
-?>
 <!doctype html>
 <html lang="en">
 
@@ -103,6 +91,7 @@ if (isset($_GET['question'])) {
     <!-- jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/scripts/api.js?17"></script>
 
 
     <script>
@@ -110,7 +99,14 @@ if (isset($_GET['question'])) {
             let question = $("#question").val();
             let answer = $("#answer").val();
 
-            window.location.href = "/admin/questions/?question=" + question + "&answer=" + answer;
+            let data = {
+                question: question,
+                answer: answer
+            };
+            endpoint(data, "add_question").then(response => {
+                window.location.href = "/admin/questions/";
+            })
+
         })
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

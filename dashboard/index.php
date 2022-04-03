@@ -61,19 +61,11 @@ if (isset($_SESSION['username'])) {
             <div class="card unselectable">
                 <h3 class="text-center"> Question: <span id="qns_id_incr"></span></h3>
                 <div class="card-body">
-                    <p id="qns">
-                        This is some text within a card body.
-                        This is some text within a card body.This is some text within a card body.
-
-                        This is some text within a card body.This is some text within a card body.
-
-                        This is some text within a card body.This is some text within a card body.
-
-                        This is some text within a card body.This is some text within a card body.
-
-                        This is some text within a card body.This is some text within a card body.
-
-                    </p>
+                    <div class="form-group">
+                        <textarea class="form-control" id="qns" rows="3" style=" -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none;" readonly></textarea>
+                    </div>
                 </div>
             </div>
 
