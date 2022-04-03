@@ -136,6 +136,7 @@ switch ($request_type) {
             $data = json_decode($data, true);
             $qns_id = $data['qns_id'];
             $answer = $data['answer'];
+            $answer = preg_replace("/\s+/", "", $answer);
 
             // getting anser of question from database
             $sql = "SELECT `answer` FROM `cf`.`questions` WHERE `id`='$qns_id'";

@@ -12,7 +12,7 @@
     <title>Log in Codefiesta!</title>
 </head>
 
-<body>
+<body id="full_s">
     <h1 class="text-center my-4">Login!</h1>
 
     <div class="container">

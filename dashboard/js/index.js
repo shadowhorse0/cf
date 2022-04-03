@@ -1,3 +1,34 @@
+// full screen necessary
+// full screen
+var elem = document.documentElement;
+var sweet_alert = false;
+/* View in fullscreen */
+function openFullscreen() {
+
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+        /* Safari */
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+        /* IE11 */
+        elem.msRequestFullscreen();
+    }
+}
+
+/* Close fullscreen */
+function closeFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+        /* Safari */
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+        /* IE11 */
+        document.msExitFullscreen();
+    }
+}
+
 let time_rem = null;
 let time_flag = false;
 let qns_id = null;
@@ -8,6 +39,24 @@ get_question();
 
 // running every secs
 let run_time = setInterval(() => {
+    // full screen
+    if (!window.screenTop && !window.screenY) {
+        if (!sweet_alert) {
+            sweet_alert = true;
+            Swal.fire({
+                icon: 'danger',
+                title: 'Please enable full screen!',
+                showConfirmButton: true,
+                showCancelButton: true,
+            }).then((result) => {
+                if (result['isConfirmed']) {
+                    openFullscreen();
+                }
+                sweet_alert = false;
+            })
+        }
+
+    }
     if (time_flag) {
         time_rem -= 1;
         console.log(time_rem);
@@ -118,7 +167,7 @@ $("#submit").click(() => {
 $("#logout").click(() => {
     Swal.fire({
         icon: 'success',
-        title: 'Do you really, want to submit test?!',
+        title: 'Do you really want to logout?!',
         showConfirmButton: true,
         showCancelButton: true,
     }).then((result) => {
@@ -127,3 +176,4 @@ $("#logout").click(() => {
         }
     })
 })
+
