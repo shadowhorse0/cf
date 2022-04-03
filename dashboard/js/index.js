@@ -44,10 +44,9 @@ let run_time = setInterval(() => {
         if (!sweet_alert) {
             sweet_alert = true;
             Swal.fire({
-                icon: 'danger',
+                icon: 'warning',
                 title: 'Please enable full screen!',
                 showConfirmButton: true,
-                showCancelButton: true,
             }).then((result) => {
                 if (result['isConfirmed']) {
                     openFullscreen();
