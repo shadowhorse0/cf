@@ -92,7 +92,7 @@ if (isset($_GET['username'])) {
                 </div>
 
                 <?php
-                $sql = "SELECT * FROM `cf`.`users` ORDER BY `score`,`time_left` DESC";
+                $sql = "SELECT * FROM `cf`.`users` ORDER BY `score` DESC, `time_left` DESC";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows == 0) {
