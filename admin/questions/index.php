@@ -33,7 +33,13 @@ if (isset($_GET['question'])) {
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <style>
+        @media only screen and (min-device-width : 360px) and (max-device-width : 640px) {
+            #formob {
+                width: 900px;
+            }
+        }
+    </style>
     <title>Questions</title>
 </head>
 
@@ -61,7 +67,7 @@ if (isset($_GET['question'])) {
     </div>
 
     <center>
-        <h1 class="text-center">Questions</h1>
+        <h1 class="text-center my-4">Questions</h1>
         <div class="container my-4 text-center" style="overflow:scroll; word-wrap: break-word;">
             <div id="formob" class="col">
 
