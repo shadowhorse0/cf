@@ -21,7 +21,7 @@ if (isset($_GET['username'])) {
     $candidate_name = $_GET['candidate_name'];
     $password = $_GET['password'];
 
-    $sql = "INSERT INTO `cf`.`users`(`username`, `candidate_name`, `password`, `score`, `time_left`) VALUES ('$username','$candidate_name','$password','0','600')";
+    $sql = "INSERT INTO `cf`.`users`(`username`, `candidate_name`, `password`, `score`, `time_left`,`status`) VALUES ('$username','$candidate_name','$password','0','600','not_attempted')";
     $conn->query($sql);
     header("Location: /admin/users/");
 }
@@ -78,7 +78,8 @@ if (isset($_GET['username'])) {
                     <div class="col-2">Candidate_name</div>
                     <div class="col-2">Password</div>
                     <div class="col-1">Score</div>
-                    <div class="col-3">Time_left</div>
+                    <div class="col-1">Time_left</div>
+                    <div class="col-2">Status</div>
                     <div class="col-2">Action</div>
                 </div>
 
@@ -97,7 +98,8 @@ if (isset($_GET['username'])) {
                                 <div class='col-2'>$row->candidate_name</div>
                                 <div class='col-2'>$row->password</div>
                                 <div class='col-1'>$row->score</div>
-                                <div class='col-3'>$row->time_left</div>
+                                <div class='col-1'>$row->time_left</div>
+                                <div class='col-2'>$row->status</div>
                                 <div class='col-2'><a href='/admin/users/?id=$row->id' class='btn btn-danger'>Delete</a></div>
                             </div>";
                 }

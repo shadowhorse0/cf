@@ -30,12 +30,18 @@ switch ($request_type) {
             if ($username != "admin") {
 
                 // checking user has already given test
-                $sql = "SELECT `time_left` FROM `cf`.`users` WHERE `username`='$username'";
-                $time_left = $conn->query($sql)->fetch_assoc()['time_left'];
-                if ($time_left == 0) {
-                    throw new Exception("Test already submitted!");
+                $sql = "SELECT `status` FROM `cf`.`users` WHERE `username`='$username'";
+                $status = $conn->query($sql)->fetch_assoc()['status'];
+                if ($status == 'completed') {
+                    throw new Exception("Test already submited!");
                 }
+
+                // chaging test status to running
+                $sql = "UPDATE `cf`.`users` SET `status`='ongoing' WHERE `username`='$username'";
+                $conn->query($sql);
             }
+
+
 
             // starting user session
             session_start();
@@ -75,6 +81,9 @@ switch ($request_type) {
 
             // logout user after time finished
             if ($time_left == 0) {
+                // updating test status completed
+                $sql = "UPDATE `cf`.`users` SET `status`='completed' WHERE `username`='$username'";
+                $conn->query($sql);
                 throw new Exception("Time Over, test submitted!");
             }
 
@@ -94,6 +103,9 @@ switch ($request_type) {
             $result = $conn->query($sql);
 
             if ($result->num_rows == 0) {
+                // updating test status completed
+                $sql = "UPDATE `cf`.`users` SET `status`='completed' WHERE `username`='$username'";
+                $conn->query($sql);
                 throw new Exception("All questions attempted!");
             }
 
