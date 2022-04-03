@@ -70,7 +70,7 @@ switch ($request_type) {
             }
 
             //deducting specified time;
-            $sql = "UPDATE `cf`.`users` SET `time_left`=$time_left";
+            $sql = "UPDATE `cf`.`users` SET `time_left`='$time_left' WHERE `username`='$username'";
             $conn->query($sql);
 
             // logout user after time finished
