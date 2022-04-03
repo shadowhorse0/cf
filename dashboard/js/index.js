@@ -40,7 +40,7 @@ get_question();
 // running every secs
 let run_time = setInterval(() => {
     // full screen
-    if (!window.screenTop && !window.screenY) {
+    if (window.innerHeight < screen.height) {
         if (!sweet_alert) {
             sweet_alert = true;
             Swal.fire({
