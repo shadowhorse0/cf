@@ -104,7 +104,7 @@ switch ($request_type) {
         session_start();
         $username = $_SESSION['username'];
         try {
-            $sql = "SELECT `id`,`question` FROM `cf`.`questions` WHERE `id` NOT IN(SELECT `question_id` FROM `cf`.`attempted` WHERE `username`='$username') ORDER BY RAND() LIMIT 1";
+            $sql = "SELECT `id`,`question` FROM `cf`.`questions` WHERE `id` NOT IN(SELECT `question_id` FROM `cf`.`attempted` WHERE `username`='$username' AND `flag` IN('0','1')) ORDER BY RAND() LIMIT 1";
             $result = $conn->query($sql);
 
             if ($result->num_rows == 0) {
@@ -115,11 +115,16 @@ switch ($request_type) {
             }
 
             $question = $result->fetch_assoc();
-
-            // updating attempted table
             $question_id = $question['id'];
-            $sql = "INSERT INTO `cf`.`attempted`( `username`, `question_id`) VALUES ('$username','$question_id')";
-            $conn->query($sql);
+
+            // checking question already in attempted or not
+            $sql = "SELECT * FROM `cf`.`attempted` WHERE `username`='$username' AND `question_id`='$question_id'";
+            $cnt = $conn->query($sql);
+            if ($cnt->num_rows == 0) {
+                // inserting in  attempted table if not already inserted
+                $sql = "INSERT INTO `cf`.`attempted`( `username`, `question_id`) VALUES ('$username','$question_id')";
+                $conn->query($sql);
+            }
 
             $response['question'] = $question;
             $response['status'] = true;
