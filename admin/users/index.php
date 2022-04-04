@@ -16,6 +16,10 @@ if (isset($_GET['id'])) {
     if ($id != 1) {
         $sql = "DELETE FROM `cf`.`users` WHERE `id`=$id";
         $conn->query($sql);
+
+        //also deleting users attempted questions
+        $sql = "DELETE FROM `cf`.`attempted` WHERE `username` IN (SELECT `username` FROM `cf`.`users` WHERE `id`='$id')";
+        $conn->query($sql);
     }
     header("Location: /admin/users/");
 }
