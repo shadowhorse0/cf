@@ -1,7 +1,7 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/partials/db/db.php';
 session_start();
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['username']) && $_SESSION['username'] != "admin") {
     $username = $_SESSION['username'];
     $sql = "SELECT * FROM `cf`.`users` WHERE `username`='$username'";
     $result = $conn->query($sql)->fetch_assoc();

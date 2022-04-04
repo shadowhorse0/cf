@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (isset($_SESSION['username']) &&  $_SESSION['username'] == "admin") {
+} else {
+    header('Location: ' . "/login");
+}
+?>
+<?php
 include $_SERVER['DOCUMENT_ROOT'] . '/partials/db/db.php';
 ?>
 
