@@ -82,7 +82,7 @@ switch ($request_type) {
 
             //checking user test submitted or not
             $sql = "SELECT `status` FROM `cf`.`users` WHERE `username`='$username'";
-            $status = $conn->query($sql);
+            $status = $conn->query($sql)->fetch_assoc()['status'];
 
             if ($status == "completed") {
                 throw new Exception("Test completed!");

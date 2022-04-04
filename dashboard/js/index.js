@@ -113,16 +113,6 @@ function get_question() {
         } else {
             $("#alert").text(response['msg']);
             $("#alert").removeClass("d-none");
-
-            //logout user after all questions finished
-            Swal.fire({
-                icon: 'success',
-                title: 'Thank you for attempting!',
-                showConfirmButton: true,
-                timer: 3000
-            }).then((result) => {
-                window.location.href = "/logout/";
-            })
         }
         $("#spinner").addClass("d-none");
         $("#submit").attr("disabled", false);
@@ -158,7 +148,7 @@ $("#submit").click(() => {
             $("#ans_alert").addClass("d-none");
             $("#qns_ans").val("");
             get_question();
-        }, 500);
+        }, 2000);
     })
 })
 
