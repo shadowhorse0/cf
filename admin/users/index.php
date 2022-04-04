@@ -14,11 +14,13 @@ include $_SERVER['DOCUMENT_ROOT'] . '/partials/db/db.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     if ($id != 1) {
-        $sql = "DELETE FROM `cf`.`users` WHERE `id`=$id";
+
+        //user attempted questions
+        $sql = "DELETE FROM `cf`.`attempted` WHERE `username` IN (SELECT `username` FROM `cf`.`users` WHERE `id`='$id')";
         $conn->query($sql);
 
-        //also deleting users attempted questions
-        $sql = "DELETE FROM `cf`.`attempted` WHERE `username` IN (SELECT `username` FROM `cf`.`users` WHERE `id`='$id')";
+        // deleting user
+        $sql = "DELETE FROM `cf`.`users` WHERE `id`=$id";
         $conn->query($sql);
     }
     header("Location: /admin/users/");
