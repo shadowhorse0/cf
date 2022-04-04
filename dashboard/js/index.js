@@ -158,7 +158,7 @@ $("#submit").click(() => {
             $("#ans_alert").addClass("d-none");
             $("#qns_ans").val("");
             get_question();
-        }, 1000);
+        }, 500);
     })
 })
 

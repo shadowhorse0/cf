@@ -80,6 +80,14 @@ switch ($request_type) {
                 $time_left = 0;
             }
 
+            //checking user test submitted or not
+            $sql = "SELECT `status` FROM `cf`.`users` WHERE `username`='$username'";
+            $status = $conn->query($sql);
+
+            if ($status == "completed") {
+                throw new Exception("Test completed!");
+            }
+
             //deducting specified time;
             $sql = "UPDATE `cf`.`users` SET `time_left`='$time_left' WHERE `username`='$username'";
             $conn->query($sql);
