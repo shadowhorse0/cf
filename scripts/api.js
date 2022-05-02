@@ -4,7 +4,6 @@ async function endpoint(data, request_type) {
     // encrypting request type
 
     var settings = {
-        // "url": "http://localhost/endpoints/endpoint.php",
         "url": "https://mpulsecodefiesta.me/endpoints/endpoint.php",
         "method": "POST",
         "dataType": "json",
