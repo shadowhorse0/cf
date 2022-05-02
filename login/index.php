@@ -21,7 +21,21 @@ $page = new page();
 </head>
 
 <body id="full_s">
-    <h1 class="text-center my-4">Login!</h1>
+
+    <div class="d-flex justify-content-around align-items-center flex-wrap">
+        <div>
+            <img src="/cf_logo.jpeg" alt="codefiesta" width="115" class="mx-2">
+        </div>
+
+        <div>
+            <img src="/mcoe_logo.png" alt="pesmcoe" width="100" class="m-2">
+        </div>
+    </div>
+
+
+    <div>
+        <h1 class="text-center my-4">CODEFIESTA: Chase the Py</h1>
+    </div>
 
     <div class="container">
         <div class="mb-3">
@@ -41,6 +55,15 @@ $page = new page();
             </div>
             <br>
             <button type="button" class="btn btn-primary my-1   " id="login">Login</button>
+        </div>
+
+        <div class="text-center m-4">
+            <span style="font-size: 20px;">Sponsored by </span>
+            <img src="/sponsors/logo_blue_tiny.png" alt="ai-adventures" width="350">
+        </div>
+
+        <div class="text-center">
+            <h4>Instructions</h4>
         </div>
 
     </div>
