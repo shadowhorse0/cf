@@ -5,7 +5,7 @@ async function endpoint(data, request_type) {
 
     var settings = {
         // "url": "http://localhost/endpoints/endpoint.php",
-        "url": "http://mpulsecodefiesta.me/endpoints/endpoint.php",
+        "url": "https://mpulsecodefiesta.me/endpoints/endpoint.php",
         "method": "POST",
         "dataType": "json",
         "async": true,
