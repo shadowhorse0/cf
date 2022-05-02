@@ -1,4 +1,6 @@
 <?php
+include $_SERVER['DOCUMENT_ROOT'] . '/classes/page.php';
+$page = new page();
 include $_SERVER['DOCUMENT_ROOT'] . '/partials/db/db.php';
 session_start();
 if (isset($_SESSION['username']) && $_SESSION['username'] != "admin") {
@@ -21,6 +23,9 @@ if (isset($_SESSION['username']) && $_SESSION['username'] != "admin") {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Dashboard</title>
+    <?php
+    $page->favicons();
+    ?>
 </head>
 
 <style>

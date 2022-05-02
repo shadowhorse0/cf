@@ -1,4 +1,6 @@
 <?php
+include $_SERVER['DOCUMENT_ROOT'] . '/classes/page.php';
+$page = new page();
 session_start();
 if (isset($_SESSION['username']) &&  $_SESSION['username'] == "admin") {
 } else {
@@ -36,6 +38,9 @@ if (isset($_GET['id'])) {
         }
     </style>
     <title>Questions</title>
+    <?php
+    $page->favicons();
+    ?>
 </head>
 
 <body>
