@@ -24,12 +24,14 @@ $page = new page();
 
     <div class="d-flex justify-content-around align-items-center flex-wrap">
         <div>
-            <img src="/cf_logo.jpeg" alt="codefiesta" width="115" class="mx-2">
+            <img src="/mcoe_logo.png" alt="pesmcoe" width="100" class="m-2">
         </div>
 
         <div>
-            <img src="/mcoe_logo.png" alt="pesmcoe" width="100" class="m-2">
+            <img src="/cf_logo.jpeg" alt="codefiesta" width="115" class="mx-2">
         </div>
+
+
     </div>
 
 
