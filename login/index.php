@@ -64,10 +64,6 @@ $page = new page();
             <img src="/sponsors/logo_blue_tiny.png" alt="ai-adventures" width="350">
         </div>
 
-        <div class="text-center">
-            <h4>Instructions</h4>
-        </div>
-
     </div>
 
     <!-- jquery -->
